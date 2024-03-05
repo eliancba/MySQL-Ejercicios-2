@@ -1,0 +1,34 @@
+25. Mostrar el salario más alto de la empresa.
+
+select max(salemp) as 'Salario más alto'
+from empleados;
+
+26. Mostrar cada una de las comisiones y el número de empleados que las reciben. Solo si tiene comision.
+
+select comisione as 'Comision', count(*) as 'Numero de empleados'
+from empleados
+where comisione > 1
+group by comisione;
+
+27. Mostrar el nombre del último empleado de la lista por orden alfabético.
+
+select max(nomemp) as 'Ultimo Nombre'
+from empleados
+order by nomemp; 
+
+28. Hallar el salario más alto, el más bajo y la diferencia entre ellos.
+
+select max(salemp) as 'Salario mas alto', min(salemp) as 'Salario minimo', (max(salemp) - min(salemp)) as 'Diferencia'
+from empleados;
+
+29. Mostrar el número de empleados de sexo femenino y de sexo masculino, por departamento.
+
+select coddepto as 'Codigo Dpto', sexemp as 'Sexo', count(*) as 'Cantidad'
+from empleados
+group by coddepto, sexemp
+
+30. Hallar el salario promedio por departamento.
+
+select coddepto as 'Codigo Departamento', avg(salemp) as 'Salario promedio'
+from empleados
+group by coddepto;

@@ -1,0 +1,34 @@
+20. Obtener el nombre y el departamento de los empleados con cargo 'Secretaria' o 'Vendedor', que
+no trabajan en el departamento de “PRODUCCION”, cuyo salario es superior a $1.000.000,
+ordenados por fecha de incorporación.
+
+select e.nomemp as 'Nombre', d.nombredpto as 'Departamento', e.cargoe as 'Cargo', e.salemp as 'Salario', e.fecincorporacion as 'Fecha'
+from empleados e, departamentos d
+where e.coddepto=d.coddepto and e.cargoe= 'Secretaria' or e.cargoe= 'Vendedor' and e.salemp > 1000000
+and d.nombredpto not in ('PRODUCCIÓN') 
+order by e.fecincorporacion;
+
+21. Obtener información de los empleados cuyo nombre tiene exactamente 11 caracteres
+
+select * from empleados
+where char_length(nomemp) = 11;
+
+22. Obtener información de los empleados cuyo nombre tiene menos de 11 caracteres.
+
+select * from empleados
+where char_length(nomemp) < 11;
+
+23. Listar los datos de los empleados cuyo nombre inicia por la letra 'M', su salario es mayor a $800.000
+o reciben comisión y trabajan para el departamento de 'VENTAS'.
+
+select e.nomemp as 'Nombre', e.salemp as 'Salario', e.comisione as 'Comision', d.nombredpto as 'Departamento'
+from empleados e, departamentos d
+where e.coddepto=d.coddepto and e.nomemp like 'M%' and (e.salemp > 800000 or e.comisione > 0)
+and d.nombredpto = 'VENTAS';
+
+24. Obtener los nombres, salarios y comisiones de los empleados que reciben un salario situado entre la
+mitad de la comisión y la propia comisión
+
+select nomemp as 'Nombre', salemp as 'Salario', comisione as 'Comision'
+from empleados
+where salemp between (comisione/2) and comisione;
